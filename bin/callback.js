@@ -34,6 +34,7 @@ exports.callbackHandler = (update, origin, doc) => {
  * @param {Object} data
  */
 const callbackRequest = (url, timeout, data) => {
+  console.log(data.data?.clusterNodes?.content?.length);
   data = JSON.stringify(data)
   const options = {
     hostname: url.hostname,
@@ -55,6 +56,7 @@ const callbackRequest = (url, timeout, data) => {
     console.error('Callback request error.', e)
     req.abort()
   })
+
   req.write(data)
   req.end()
 }
